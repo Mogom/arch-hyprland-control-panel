@@ -1,0 +1,104 @@
+(defpoll time :interval "1s" "date '+%H:%M'")
+(defpoll date_short :interval "60s" "date '+%a %d %b'")
+(defpoll volume :interval "1s" "~/.config/eww/scripts/control-panel.sh get-volume")
+(defpoll brightness :interval "1s" "~/.config/eww/scripts/control-panel.sh get-brightness")
+(defpoll battery :interval "30s" "~/.config/eww/scripts/control-panel.sh get-battery")
+(defpoll wifi :interval "30s" "~/.config/eww/scripts/control-panel.sh get-wifi")
+(defpoll cpu :interval "5s" "~/.config/eww/scripts/control-panel.sh get-cpu")
+(defpoll ram :interval "5s" "~/.config/eww/scripts/control-panel.sh get-ram")
+
+(defwidget panel []
+  (box :class "panel-shell"
+    :orientation "vertical"
+    :spacing 14
+    :space-evenly false
+    (box :class "topbar"
+      :space-evenly false
+      :halign "center"
+      (label :class "brand" :text "Tokio Night")
+      (box :class "topbar-right"
+        :space-evenly false
+        :halign "end"
+        (label :class "time" :text time)
+      ))
+
+    (box :class "section-header"
+      :space-evenly false
+      :halign "start"
+      (label :class "section-title" :text "System"))
+
+    (box :class "system-grid"
+      :spacing 12
+      (box :class "system-card"
+        :orientation "vertical"
+        :space-evenly false
+        (box :class "metric-row"
+          (label :class "icon" :text "🔊")
+          (label :class "metric-label" :text "Volume")
+          (label :class "metric-value" :text "${volume}%"))
+        (box :class "slider-wrap"
+          (scale :class "slider volume" :min 0 :max 100 :value volume :onchange "wpctl set-volume @DEFAULT_AUDIO_SINK@ {}%")))
+
+      (box :class "system-card"
+        :orientation "vertical"
+        :space-evenly false
+        (box :class "metric-row"
+          (label :class "icon" :text "☀")
+          (label :class "metric-label" :text "Brightness")
+          (label :class "metric-value" :text "${brightness}%"))
+        (box :class "slider-wrap"
+          (scale :class "slider brightness" :min 0 :max 100 :value brightness :onchange "brightnessctl set {}%"))))
+
+    (box :class "section-header"
+      :space-evenly false
+      :halign "start"
+      (label :class "section-title" :text "Status"))
+
+    (box :class "stats-grid"
+      :spacing 10
+      (box :class "stat-card"
+        :orientation "vertical"
+        :space-evenly false
+        (label :class "stat-label" :text "CPU")
+        (label :class "stat-value" :text "${cpu}%"))
+
+      (box :class "stat-card"
+        :orientation "vertical"
+        :space-evenly false
+        (label :class "stat-label" :text "RAM")
+        (label :class "stat-value" :text "${ram}%"))
+
+      (box :class "stat-card"
+        :orientation "vertical"
+        :space-evenly false
+        (label :class "stat-label" :text "BAT")
+        (label :class "stat-value" :text "${battery}%")))
+
+    (box :class "quick-grid"
+      :spacing 10
+      (button :class "action-btn" :onclick "~/.config/eww/scripts/control-panel.sh volume-toggle" "Mute")
+      (button :class "action-btn" :onclick "~/.config/eww/scripts/control-panel.sh brightness-up" "+ Bright")
+      (button :class "action-btn" :onclick "~/.config/eww/scripts/control-panel.sh brightness-down" "- Bright")
+      (button :class "action-btn" :onclick "~/.config/eww/scripts/control-panel.sh lock" "Lock"))
+
+    (box :class "footer-strip"
+      :space-evenly false
+      :halign "space-between"
+      (label :class "wifi" :text "Wi‑Fi: ${wifi}")
+      (label :class "date" :text date_short)
+      (button :class "power" :onclick "~/.config/eww/scripts/control-panel.sh logout" :timeout "0s" "⏻"))
+
+    ))
+
+(defwindow control-panel
+  :monitor 0
+  :geometry (geometry :x "0%"
+                      :y "4%"
+                      :width "430px"
+                      :height "540px"
+                      :anchor "top right")
+  :stacking "fg"
+  :exclusive false
+  :focusable true
+  :wm-ignore true
+  (panel))

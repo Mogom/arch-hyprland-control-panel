@@ -1,0 +1,168 @@
+* {
+  all: unset;
+  font-family: "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
+  font-size: 12px;
+}
+
+window.control-panel {
+  background: rgba(17, 18, 27, 0.65);
+  border-radius: 24px;
+  border: 1px solid rgba(122, 162, 247, 0.35);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.55);
+}
+
+.panel-shell {
+  padding: 18px 18px 14px 18px;
+  background: linear-gradient(180deg, rgba(26, 27, 38, 0.96), rgba(22, 22, 30, 0.92));
+  border-radius: 24px;
+}
+
+.topbar {
+  padding: 0 4px 8px 4px;
+  border-bottom: 1px solid rgba(122, 162, 247, 0.18);
+}
+
+.brand {
+  color: #c0caf5;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.topbar-right {
+  margin-left: auto;
+}
+
+.time {
+  color: #7dcfff;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.section-header {
+  margin-top: 10px;
+}
+
+.section-title {
+  color: #7aa2f7;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 10px;
+}
+
+.system-grid,
+.stats-grid,
+.quick-grid {
+  margin-top: 8px;
+}
+
+.system-card,
+.stat-card {
+  background: rgba(36, 40, 59, 0.72);
+  border: 1px solid rgba(122, 162, 247, 0.15);
+  border-radius: 16px;
+  padding: 12px;
+}
+
+.system-card {
+  min-width: 180px;
+}
+
+.metric-row {
+  margin-bottom: 8px;
+}
+
+.icon {
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+.metric-label,
+.stat-label {
+  color: #c0caf5;
+  font-weight: 700;
+}
+
+.metric-value,
+.stat-value {
+  margin-left: auto;
+  color: #7dcfff;
+  font-weight: 800;
+}
+
+.slider-wrap {
+  margin-top: 4px;
+}
+
+scale trough {
+  background: rgba(86, 95, 137, 0.32);
+  border-radius: 999px;
+  min-height: 8px;
+}
+
+scale highlight {
+  background: linear-gradient(90deg, #7aa2f7, #7dcfff);
+  border-radius: 999px;
+}
+
+scale slider {
+  background: transparent;
+  min-width: 0px;
+  min-height: 0px;
+}
+
+.stat-card {
+  min-width: 120px;
+}
+
+.stat-value {
+  color: #9ece6a;
+  font-size: 18px;
+}
+
+.quick-grid {
+  padding-top: 6px;
+}
+
+.action-btn {
+  background: rgba(36, 40, 59, 0.8);
+  border: 1px solid rgba(122, 162, 247, 0.15);
+  border-radius: 12px;
+  padding: 10px 14px;
+  color: #c0caf5;
+  font-weight: 700;
+}
+
+.action-btn:hover {
+  background: rgba(122, 162, 247, 0.15);
+}
+
+.footer-strip {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-top: 1px solid rgba(122, 162, 247, 0.14);
+  color: #c0caf5;
+}
+
+.wifi,
+.date {
+  color: #c0caf5;
+  font-size: 11px;
+}
+
+.power {
+  background: rgba(247, 118, 142, 0.16);
+  color: #f7768e;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-weight: 800;
+  border: 1px solid rgba(247, 118, 142, 0.32);
+}
+
+.power:hover {
+  background: rgba(247, 118, 142, 0.25);
+}
+
+button, label {
+  all: unset;
+}
