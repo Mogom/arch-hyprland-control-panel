@@ -1,7 +1,7 @@
 # Arch Hyprland Control Panel
 
 Este repositorio contiene una base para un panel de control flotante tipo "Control Center" para Hyprland, con paleta Tokyo Night y estilo muy limpio, pensado para combinar con tu SDDM y tu wallpaper de anime.
-
+sajhdashd
 ## Estructura
 
 - `.config/eww/eww.yuck` — layout del widget
